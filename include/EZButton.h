@@ -14,13 +14,13 @@ enum EventTypes
 class EZButton
 {
 public:
-    ulong long HoldTreshHold;
-    ulong HoldInterval;
+    unsigned long HoldTreshHold;
+    unsigned long HoldInterval;
 
     EZButton(const String buttonNames[],
              bool *(*readButtons)(String *, int),
-             ulong holdTreshold = 500,
-             ulong holdInterval = 500);
+             unsigned long holdTreshold = 500,
+             unsigned long holdInterval = 500);
 
     ~EZButton();
 

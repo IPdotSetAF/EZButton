@@ -2,8 +2,8 @@
 
 EZButton::EZButton(const String buttonNames[],
                    bool *(*readButtons)(String *, int),
-                   ulong holdTreshold,
-                   ulong holdInterval)
+                   unsigned long holdTreshold,
+                   unsigned long holdInterval)
 {
     _numButtons = buttonNames->length() - 1;
     HoldTreshHold = holdTreshold;
