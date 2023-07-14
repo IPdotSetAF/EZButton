@@ -1,0 +1,26 @@
+{
+    "name": "EZButton",
+    "version": "1.0.0",
+    "description": "A Library for managing different button events. Events include: OnPressed, OnReleased, OnHold, OnHoldReleased.",
+    "keywords": "button, key, event, hold, press, release",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/IPdotSetAF/EZButton.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Mohammad Mahdi Nazari",
+        "email": "IPdotSetAF@gmail.com",
+        "url": "https://www.ip-af.ir/contact",
+        "maintainer": true
+      }
+    ],
+    "license": "GPL-V3",
+    "homepage": "https://www.ip-af.ir/Projects/Electronics/EZButton",
+    "dependencies": {
+    },
+    "frameworks": "*",
+    "platforms": "*"
+  }
