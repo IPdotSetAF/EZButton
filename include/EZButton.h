@@ -24,6 +24,7 @@ public:
 
     ~EZButton();
 
+    void Reset();
     void CheckButtons();
     void Subscribe(String buttonName, void (*event)(), EventTypes type);
 

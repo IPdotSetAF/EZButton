@@ -43,6 +43,15 @@ EZButton::~EZButton()
     delete[] _onHoldReleaseEvents;
 }
 
+void EZButton::Reset(){
+    for (int i = 0; i < _numButtons; i++)
+    {
+        _buttonDownMillis[i] = 0;
+        _buttonLastState[i] = false;
+        _lastHoldInterval[i] = 0;
+    }
+}
+
 void EZButton::CheckButtons()
 {
     bool *buttonStates = _readButtons(_buttons, _numButtons);
