@@ -18,7 +18,7 @@ public:
     unsigned long HoldInterval;
 
     EZButton(const String buttonNames[],
-             bool *(*readButtons)(String *, int),
+             void (*readButtons)(String *, bool *, int),
              unsigned long holdTreshold = 500,
              unsigned long holdInterval = 500);
 
@@ -41,7 +41,7 @@ private:
     Event *_onReleaseEvents;
     Event *_onHoldReleaseEvents;
     Event *_onHoldEvents;
-    bool *(*_readButtons)(String *, int);
+    void (*_readButtons)(String *, bool *, int);
 };
 
 #endif // EZButton_H

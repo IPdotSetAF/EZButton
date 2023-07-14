@@ -1,7 +1,7 @@
 #include "EZButton.h"
 
 EZButton::EZButton(const String buttonNames[],
-                   bool *(*readButtons)(String *, int),
+                   void (*readButtons)(String *, bool *, int),
                    unsigned long holdTreshold,
                    unsigned long holdInterval)
 {
@@ -43,7 +43,8 @@ EZButton::~EZButton()
     delete[] _onHoldReleaseEvents;
 }
 
-void EZButton::Reset(){
+void EZButton::Reset()
+{
     for (int i = 0; i < _numButtons; i++)
     {
         _buttonDownMillis[i] = 0;
@@ -54,7 +55,8 @@ void EZButton::Reset(){
 
 void EZButton::CheckButtons()
 {
-    bool *buttonStates = _readButtons(_buttons, _numButtons);
+    bool *buttonStates = new bool[_numButtons];
+    _readButtons(_buttons, buttonStates, _numButtons);
 
     for (int i = 0; i < _numButtons; i++)
     {
