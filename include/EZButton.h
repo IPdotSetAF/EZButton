@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 
+#define EVENT_COUNT 4
 enum EventTypes
 {
     PRESSED,
@@ -14,34 +15,32 @@ enum EventTypes
 class EZButton
 {
 public:
-    unsigned long HoldTreshHold;
-    unsigned long HoldInterval;
+    unsigned int HoldTreshHold;
+    unsigned int HoldInterval;
 
-    EZButton(const String buttonNames[],
-             void (*readButtons)(String *, bool *, int),
-             unsigned long holdTreshold = 500,
-             unsigned long holdInterval = 500);
+    EZButton(int buttonCount,
+             void (*readButtons)(bool *, int),
+             unsigned int holdTreshold = 500,
+             unsigned int holdInterval = 500);
 
     ~EZButton();
 
     void Reset();
     void CheckButtons();
-    void Subscribe(String buttonName, void (*event)(), EventTypes type);
+    void Subscribe(int index, void (*event)(), EventTypes type);
 
 private:
     int _numButtons;
-    String *_buttons;
 
     unsigned long *_buttonDownMillis;
     unsigned int *_lastHoldInterval;
     bool *_buttonLastState;
 
     typedef void (*Event)(); // Type alias for function pointer
-    Event *_onPressedEvents;
-    Event *_onReleaseEvents;
-    Event *_onHoldReleaseEvents;
-    Event *_onHoldEvents;
-    void (*_readButtons)(String *, bool *, int);
+    Event *_events;
+    void (*_readButtons)(bool *, int);
+
+    void CallEvent(int index, EventTypes type);
 };
 
 #endif // EZButton_H
