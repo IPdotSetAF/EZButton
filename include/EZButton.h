@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+// #define DEBUG
+
 #define EVENT_COUNT 4
 enum EventTypes
 {
@@ -41,6 +43,11 @@ private:
     void (*_readButtons)(bool *, int);
 
     void CallEvent(int index, EventTypes type);
+    int EventIndex(int index, EventTypes type);
+
+#ifdef DEBUG
+    void DebugEvents(int index, EventTypes type);
+#endif
 };
 
 #endif // EZButton_H

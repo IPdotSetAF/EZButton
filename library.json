@@ -1,6 +1,6 @@
 {
     "name": "EZButton",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "A Library for managing different button events. Events include: OnPressed, OnReleased, OnHold, OnHoldReleased.",
     "keywords": "button, key, event, hold, press, release",
     "repository":

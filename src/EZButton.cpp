@@ -82,12 +82,36 @@ void EZButton::CheckButtons()
 
 void EZButton::Subscribe(int index, void (*event)(), EventTypes type)
 {
-    _events[index + type * EVENT_COUNT] = event;
+    _events[EventIndex(index, type)] = event;
+
+#ifdef DEBUG
+    Serial.println("Subscribe:");
+    DebugEvents(index, type);
+#endif
 }
 
 void EZButton::CallEvent(int index, EventTypes type)
 {
-    int i = index + type * EVENT_COUNT;
+    int i = EventIndex(index, type);
+
+#ifdef DEBUG
+    Serial.println("Call:");
+    DebugEvents(index, type);
+#endif
+
     if (_events[i] != nullptr)
         _events[i]();
 }
+
+int EZButton::EventIndex(int index, EventTypes type){
+    return index + type * _numButtons;
+}
+
+#ifdef DEBUG
+void EZButton::DebugEvents(int index, EventTypes type)
+{
+    Serial.println("index : " + (String)index);
+    Serial.println("event : " + (String)type);
+    Serial.println("i: " + (String)EventIndex(index, type));
+}
+#endif
