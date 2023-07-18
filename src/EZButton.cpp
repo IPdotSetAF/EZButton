@@ -55,7 +55,7 @@ void EZButton::CheckButtons()
             }
             else if (millis() - _buttonDownMillis[i] > HoldTreshHold)
             {
-                unsigned long interval = (millis() - _buttonDownMillis[i]) / HoldInterval;
+                unsigned int interval = (millis() - _buttonDownMillis[i]) / HoldInterval;
                 if (interval > _lastHoldInterval[i])
                 {
                     _lastHoldInterval[i] = interval;
