@@ -27,7 +27,7 @@ public:
 
     ~EZButton();
 
-    void Reset();
+    void Blackout(unsigned long milis);
     void CheckButtons();
     void Subscribe(int index, void (*event)(), EventTypes type);
 
@@ -37,6 +37,7 @@ private:
     unsigned long *_buttonDownMillis;
     unsigned int *_lastHoldInterval;
     bool *_buttonLastState;
+    unsigned long _blackoutTime = 0;
 
     typedef void (*Event)(); // Type alias for function pointer
     Event *_events;

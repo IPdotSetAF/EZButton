@@ -17,7 +17,7 @@ EZButton::EZButton(int buttonCount,
     for (int i = 0; i < _numButtons * EVENT_COUNT; i++)
         _events[i] = nullptr;
 
-    Reset();
+    Blackout(0);
 }
 
 EZButton::~EZButton()
@@ -28,7 +28,7 @@ EZButton::~EZButton()
     delete[] _events;
 }
 
-void EZButton::Reset()
+void EZButton::Blackout(unsigned long milis)
 {
     for (int i = 0; i < _numButtons; i++)
     {
@@ -36,10 +36,14 @@ void EZButton::Reset()
         _buttonLastState[i] = false;
         _lastHoldInterval[i] = 0;
     }
+    _blackoutTime = millis() + milis;
 }
 
 void EZButton::CheckButtons()
 {
+    if (_blackoutTime > millis())
+        return;
+
     bool *buttonStates = new bool[_numButtons];
     _readButtons(buttonStates, _numButtons);
 
@@ -103,7 +107,8 @@ void EZButton::CallEvent(int index, EventTypes type)
         _events[i]();
 }
 
-int EZButton::EventIndex(int index, EventTypes type){
+int EZButton::EventIndex(int index, EventTypes type)
+{
     return index + type * _numButtons;
 }
 
