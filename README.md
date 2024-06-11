@@ -42,7 +42,7 @@ This Library is available in `Arduino Library Repository` and `PIO` and you can 
 ![arduino library manager]()
 - PlatformIO Libraries
 ![pltformio library]()
-`ipdotsetaf/EZButton@^2.2.0`
+`ipdotsetaf/EZButton@^2.3.0`
 ### Usage
 
 1. Include the library
