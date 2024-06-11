@@ -74,7 +74,7 @@ _ezb.Subscribe(BTN_4, Btn4Hold, HOLD);
 _ezb.Subscribe(BTN_4, Btn4Release, RELEASED);
 ``` 
 > [!IMPORTANT]
-> 'button index' stands for an array inside EZButton that hold you buttins states and IS NOT pin number of the button.
+> `button index` stands for an array inside EZButton that holds your button states and IS NOT pin number of the button.
 
 6. Define `ReadButtons` function
 ``` C++
