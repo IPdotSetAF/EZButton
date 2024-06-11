@@ -39,7 +39,7 @@ void EZButton::Blackout(unsigned long milis)
     _blackoutTime = millis() + milis;
 }
 
-void EZButton::CheckButtons()
+void EZButton::Loop()
 {
     if (_blackoutTime > millis())
         return;
@@ -74,9 +74,9 @@ void EZButton::CheckButtons()
                 _buttonLastState[i] = 0;
                 _lastHoldInterval[i] = 0;
                 if (millis() - _buttonDownMillis[i] > HoldTreshHold)
-                    CallEvent(i, EventTypes::HOLD_RELEASE);
+                    CallEvent(i, EventTypes::HOLD_RELEASED);
                 else
-                    CallEvent(i, EventTypes::RELEASE);
+                    CallEvent(i, EventTypes::RELEASED);
             }
         }
     }
@@ -88,7 +88,7 @@ void EZButton::Subscribe(int index, void (*event)(), EventTypes type)
 {
     _events[EventIndex(index, type)] = event;
 
-#ifdef DEBUG
+#ifdef EZBUTTON_DEBUG
     Serial.println("Subscribe:");
     DebugEvents(index, type);
 #endif
@@ -98,7 +98,7 @@ void EZButton::CallEvent(int index, EventTypes type)
 {
     int i = EventIndex(index, type);
 
-#ifdef DEBUG
+#ifdef EZBUTTON_DEBUG
     Serial.println("Call:");
     DebugEvents(index, type);
 #endif
@@ -112,7 +112,7 @@ int EZButton::EventIndex(int index, EventTypes type)
     return index + type * _numButtons;
 }
 
-#ifdef DEBUG
+#ifdef EZBUTTON_DEBUG
 void EZButton::DebugEvents(int index, EventTypes type)
 {
     Serial.println("index : " + (String)index);

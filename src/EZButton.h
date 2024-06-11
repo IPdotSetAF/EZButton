@@ -3,15 +3,13 @@
 
 #include <Arduino.h>
 
-// #define DEBUG
-
 #define EVENT_COUNT 4
 enum EventTypes
 {
     PRESSED,
     HOLD,
-    HOLD_RELEASE,
-    RELEASE
+    HOLD_RELEASED,
+    RELEASED
 };
 
 class EZButton
@@ -28,7 +26,7 @@ public:
     ~EZButton();
 
     void Blackout(unsigned long milis);
-    void CheckButtons();
+    void Loop();
     void Subscribe(int index, void (*event)(), EventTypes type);
 
 private:
@@ -46,7 +44,7 @@ private:
     void CallEvent(int index, EventTypes type);
     int EventIndex(int index, EventTypes type);
 
-#ifdef DEBUG
+#ifdef EZBUTTON_DEBUG
     void DebugEvents(int index, EventTypes type);
 #endif
 };
