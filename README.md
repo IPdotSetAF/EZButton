@@ -7,7 +7,7 @@
 </p>
 
 # EZButton
-Transform raw button/touch inputs into events easily.
+Arduino library that Transform raw button/touch inputs into events easily.
 
 Subscibe to Pressed/Released/Hold/HoldReleased events of as many buttons as you want. Customize time tresholds. Works with any button read method.
 
@@ -39,9 +39,9 @@ Subscibe to Pressed/Released/Hold/HoldReleased events of as many buttons as you 
 ### Installation
 This Library is available in `Arduino Library Repository` and `PIO` and you can install it from: 
 - Arduino IDE Library Manager
-![arduino library manager]()
+![arduino library manager](image-1.png)
 - PlatformIO Libraries
-![pltformio library]()
+![pltformio library](image.png)
 `ipdotsetaf/EZButton@^2.3.0`
 ### Usage
 
