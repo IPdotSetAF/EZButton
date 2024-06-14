@@ -15,12 +15,12 @@ enum EventTypes
 class EZButton
 {
 public:
-    unsigned int HoldTreshHold;
+    unsigned int HoldThreshHold;
     unsigned int HoldInterval;
 
     EZButton(int buttonCount,
              void (*readButtons)(bool *, int),
-             unsigned int holdTreshold = 500,
+             unsigned int holdThreshold = 500,
              unsigned int holdInterval = 500);
 
     ~EZButton();
