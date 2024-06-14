@@ -7,9 +7,9 @@
 </p>
 
 # EZButton
-Arduino library that Transform raw button/touch inputs into events easily.
+Arduino library that transforms raw button/touch inputs into events easily.
 
-Subscibe to Pressed/Released/Hold/HoldReleased events of as many buttons as you want. Customize time tresholds. Works with any button read method.
+Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as you want. Customize time thresholds. Works with any button read method.
 
 ## Features
 - Flexibility
@@ -20,28 +20,32 @@ Subscibe to Pressed/Released/Hold/HoldReleased events of as many buttons as you 
     - Also works with:
         - Pulling
         - Multiplexing
-        - Interupts
+        - Interrupts
         - AnalogReads
         - etc
-- Event Subscibtion : You can subscribe to any of the following events for any button:
+- Event Subscription: You can subscribe to any of the following events for any button:
     - Pressed
     - Released
     - Hold
     - Hold Released
-- Unlimited Buttons/Touches : You can config for as many buttons as you need.
-- Customizability: You can change any of the time tresholds to customize you user experience.
-    - `HoldTreshHold` : The time it takes before the first `HOLD` event is executed after button is held down.
-    - `HoldInterval` : The Time Interval that corresponds to `HOLD` event being executed repeatedly after the first `HOLD` event was registerd.
-- Debugging : Easily enable/disable debugging for all button states and events.
+- Unlimited Buttons/Touches: You can configure as many buttons as you need.
+- Customizability: You can change any of the time thresholds to customize your user experience.
+    - `HoldTreshHold`: The time it takes before the first `HOLD` event is executed after the button is held down.
+    - `HoldInterval`: The Time Interval that corresponds to the `HOLD` event being executed repeatedly after the first `HOLD` event was registered.
+- Debugging: Easily enable/disable debugging for all button states and events.
 - Blackout Time: Disable any event execution for any amount of time.
 
 ## How To
 ### Installation
 This Library is available in `Arduino Library Repository` and `PIO` and you can install it from: 
 - Arduino IDE Library Manager
+
 ![arduino library manager](image-1.png)
+
 - PlatformIO Libraries
+  
 ![pltformio library](image.png)
+
 `ipdotsetaf/EZButton@^2.3.0`
 ### Usage
 
@@ -61,7 +65,7 @@ This Library is available in `Arduino Library Repository` and `PIO` and you can 
 //HoldInterval: 300ms
 EZButton _ezb(4, ReadButtons, 500, 300);
 ```
-3. Initialize you buttons/touches however you want.
+3. Initialize your buttons/touches however you want.
 4. Attach any Interrups if needed.
 5. Subscribe to any event you need
 ``` C++
@@ -74,13 +78,13 @@ _ezb.Subscribe(BTN_4, Btn4Hold, HOLD);
 _ezb.Subscribe(BTN_4, Btn4Release, RELEASED);
 ``` 
 > [!IMPORTANT]
-> `button index` stands for an array inside EZButton that holds your button states and IS NOT pin number of the button.
+> `button index` stands for an array inside EZButton that holds your button states and IS NOT PIN of the button.
 
 6. Define `ReadButtons` function
 ``` C++
 void ReadButtons(bool *states, int num)
 {
-    //Read all button states however you want
+	//Read all button states however you want
 	states[BTN_1] = !digitalRead(2);
 	states[BTN_2] = touchRead(3) <= 50;
 	states[BTN_3] = touchRead(4) <= 50;
@@ -91,7 +95,7 @@ void ReadButtons(bool *states, int num)
 ``` C++
 void loop()
 {
-    //...
+	//...
 
 	_ezb.Loop();
 }
@@ -101,18 +105,18 @@ void loop()
 > #### Debugging
 > In order to enable debugging, you need to add the `-DEZBUTTON_DEBUG` parameter to your `build_flags`.
 > 
-> This will log event subscibtions and event executions to the serial.
+> This will log event subscriptions and event executions to the serial.
 
 > [!IMPORTANT]
-> Right now only one subscribtion is possible for each button event.
+> Right now only one subscription is possible for each button event.
 >
-> e.g. You can only subscribe to the `PRESSED` event of `BTN_2` once and the second subscribtion to this event will override the last one.
+> e.g. You can only subscribe to the `PRESSED` event of `BTN_2` once and the second subscription to this event will override the last one.
 >
-> You can still subscribe to other events of the same button with no problem. 
+> You can still subscribe to other events with the same button with no problem. 
 
 ## TODO:
 - Rewrite in C 
-- Add multiple subscribtions to a single event
+- Add multiple subscriptions to a single event
 
 ## Contribution
 - You can open Issues for any bug report or feature request.
