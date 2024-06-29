@@ -12,7 +12,7 @@ EZButton _ezb(1, ReadButtons, 1000, 200);
 
 void setup() {
   //initialize pins
-  pinMode(BTN_1_PIN, INPUT);
+  pinMode(BTN_1_PIN, INPUT_PULLUP);
   pinMode(LED_BUILTIN, OUTPUT);
 
   //subscribe to needed events
