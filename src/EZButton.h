@@ -15,7 +15,7 @@ enum EventTypes
 class EZButton
 {
 public:
-    unsigned int HoldThreshHold;
+    unsigned int HoldThreshold;
     unsigned int HoldInterval;
 
     EZButton(int buttonCount,

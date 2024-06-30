@@ -35,7 +35,7 @@ Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as y
     - Hold Released
 - Unlimited Buttons/Touches: You can configure as many buttons as you need.
 - Customizability: You can change any of the time thresholds to customize your user experience.
-    - `HoldTreshHold`: The time it takes before the first `HOLD` event is executed after the button is held down.
+    - `HoldThreshold`: The time it takes before the first `HOLD` event is executed after the button is held down.
     - `HoldInterval`: The Time Interval that corresponds to the `HOLD` event being executed repeatedly after the first `HOLD` event was registered.
 - Debugging: Easily enable/disable debugging for all button states and events.
 - Blackout Time: Disable any event execution for any amount of time.
@@ -66,7 +66,7 @@ This Library is available in `Arduino Library Repository` and `PIO` and you can 
 #define BTN_4 3
 //config for 4 buttons
 //Read button states from the 'ReadButtons' function
-//HoldTreshHold: 500ms
+//HoldThreshold: 500ms
 //HoldInterval: 300ms
 EZButton _ezb(4, ReadButtons, 500, 300);
 ```
