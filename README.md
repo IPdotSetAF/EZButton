@@ -12,7 +12,7 @@ Arduino library that transforms raw button/touch inputs into events easily.
 Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as you want. Customize time thresholds. Works with any button read method.
 
 > [!IMPORTANT]
-> If you found this library helpful, please consider leaving an Star⭐
+> If you found this library helpful, please consider leaving a Star⭐
 > 
 > It helps a lot in maintaining the project ❤️
 
@@ -108,7 +108,7 @@ void loop()
 
 > [!TIP]
 > #### Debugging
-> In order to enable debugging, you need to add the `-DEZBUTTON_DEBUG` parameter to your `build_flags`.
+> To enable debugging, you need to add the `-DEZBUTTON_DEBUG` parameter to your `build_flags`.
 > 
 > This will log event subscriptions and event executions to the serial.
 
