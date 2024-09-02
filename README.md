@@ -119,6 +119,10 @@ void loop()
 >
 > You can still subscribe to other events with the same button with no problem. 
 
+## Example
+
+Please refer to this [Fully working example](https://github.com/IPdotSetAF/EZButton/blob/main/examples/Blink/Blink.ino)
+
 ## TODO:
 - Rewrite in C 
 - Add multiple subscriptions to a single event
