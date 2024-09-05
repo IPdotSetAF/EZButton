@@ -34,11 +34,14 @@ Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as y
     - Hold
     - Hold Released
 - Unlimited Buttons/Touches: You can configure as many buttons as you need.
+- Input signal Debounceing.
 - Customizability: You can change any of the time thresholds to customize your user experience.
     - `HoldThreshold`: The time it takes before the first `HOLD` event is executed after the button is held down.
     - `HoldInterval`: The Time Interval that corresponds to the `HOLD` event being executed repeatedly after the first `HOLD` event was registered.
-- Debugging: Easily enable/disable debugging for all button states and events.
-- Blackout Time: Disable any event execution for any amount of time.
+    - `DebounceTime`: The Time that is used to debounce input signal.
+- Debugging: Easily enable/disable logging for all button states and events.
+- Serial Output Customization: You can change the serial Output used for logging.
+- Blackout Time: Disable any event execution for the given amount of time.
 
 ## How To
 ### Installation
@@ -68,12 +71,17 @@ This Library is available in `Arduino Library Repository` and `PIO` and you can 
 //Read button states from the 'ReadButtons' function
 //HoldThreshold: 500ms
 //HoldInterval: 300ms
-EZButton _ezb(4, ReadButtons, 500, 300);
+//DebounceTime: 15ms
+EZButton _ezb(4, ReadButtons, 500, 300, 15);
 ```
 3. Initialize your buttons/touches however you want.
 4. Attach any Interrups if needed.
 5. Subscribe to any event you need
 ``` C++
+//Define your pinModes
+//...
+
+//button event subscribtion
 //button index, function to execute, event type
 _ezb.Subscribe(BTN_1, Btn1HoldRelease, HOLD_RELEASED);
 _ezb.Subscribe(BTN_2, Btn2Release, RELEASED);
