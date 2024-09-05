@@ -8,7 +8,7 @@ void ReadButtons(bool *states, int num) {
   states[BTN_1] = !digitalRead(BTN_1_PIN);
 }
 
-EZButton _ezb(1, ReadButtons, 1000, 200);
+EZButton _ezb(1, ReadButtons, 1000, 200, 15);
 
 void setup() {
   //initialize pins

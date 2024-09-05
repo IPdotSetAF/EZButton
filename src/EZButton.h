@@ -17,11 +17,13 @@ class EZButton
 public:
     unsigned int HoldThreshold;
     unsigned int HoldInterval;
+    unsigned int DebounceTime;
 
     EZButton(int buttonCount,
              void (*readButtons)(bool *, int),
              unsigned int holdThreshold = 500,
-             unsigned int holdInterval = 500);
+             unsigned int holdInterval = 500,
+             unsigned int debounceTime = 15);
 
     ~EZButton();
 

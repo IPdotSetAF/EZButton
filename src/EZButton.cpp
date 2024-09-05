@@ -3,11 +3,13 @@
 EZButton::EZButton(int buttonCount,
                    void (*readButtons)(bool *, int),
                    unsigned int holdThreshold,
-                   unsigned int holdInterval)
+                   unsigned int holdInterval,
+                   unsigned int debounceTime)
 {
     _numButtons = buttonCount;
     HoldThreshold = holdThreshold;
     HoldInterval = holdInterval;
+    DebounceTime = debounceTime;
     _readButtons = readButtons;
     _events = new Event[_numButtons * EVENT_COUNT];
     _buttonDownMillis = new unsigned long[_numButtons];
@@ -49,6 +51,10 @@ void EZButton::Loop()
 
     for (int i = 0; i < _numButtons; i++)
     {
+        unsigned long stateChangeDiff = millis() - _buttonDownMillis[i];
+        if (stateChangeDiff < DebounceTime)
+            continue;
+            
         if (buttonStates[i])
         {
             if (!_buttonLastState[i])
@@ -57,9 +63,9 @@ void EZButton::Loop()
                 _buttonLastState[i] = 1;
                 CallEvent(i, EventTypes::PRESSED);
             }
-            else if (millis() - _buttonDownMillis[i] > HoldThreshold)
+            else if (stateChangeDiff > HoldThreshold)
             {
-                unsigned int interval = (millis() - _buttonDownMillis[i]) / HoldInterval;
+                unsigned int interval = stateChangeDiff / HoldInterval;
                 if (interval > _lastHoldInterval[i])
                 {
                     _lastHoldInterval[i] = interval;
@@ -73,7 +79,7 @@ void EZButton::Loop()
             {
                 _buttonLastState[i] = 0;
                 _lastHoldInterval[i] = 0;
-                if (millis() - _buttonDownMillis[i] > HoldThreshold)
+                if (stateChangeDiff > HoldThreshold)
                     CallEvent(i, EventTypes::HOLD_RELEASED);
                 else
                     CallEvent(i, EventTypes::RELEASED);
