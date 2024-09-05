@@ -47,7 +47,7 @@ private:
     int EventIndex(int index, EventTypes type);
 
 #ifdef EZBUTTON_DEBUG
-    void DebugEvents(int index, EventTypes type);
+    void LogEventToSerial(String message, int index, EventTypes type);
 #endif
 };
 
