@@ -8,9 +8,9 @@
     void EZButton::LogEventToSerial(String message, int index, EventTypes type)
     {
         EZBUTTON_SerialOutput.println(message);
-        EZBUTTON_SerialOutput.println("index : " + (String)index);
-        EZBUTTON_SerialOutput.println("event : " + (String)type);
-        EZBUTTON_SerialOutput.println("i: " + (String)EventIndex(index, type));
+        EZBUTTON_SerialOutput.println("button index: " + (String)index);
+        EZBUTTON_SerialOutput.println("event type: " + (String)type);
+        EZBUTTON_SerialOutput.println("event index: " + (String)EventIndex(index, type));
     }
     #define LogEvent(...) LogEventToSerial(__VA_ARGS__)
 #else
