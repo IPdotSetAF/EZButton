@@ -9,7 +9,7 @@
 # EZButton
 Arduino library that transforms raw button/touch inputs into events easily.
 
-Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as you want. Customize time thresholds. Works with any button read method.
+Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as you want. Customize time thresholds and debouncing. Works with any button read method.
 
 > [!IMPORTANT]
 > If you found this library helpful, please consider leaving a Star⭐
@@ -34,7 +34,7 @@ Subscribe to Pressed/Released/Hold/HoldReleased events with as many buttons as y
     - Hold
     - Hold Released
 - Unlimited Buttons/Touches: You can configure as many buttons as you need.
-- Input signal Debounceing.
+- Input signal Debouncing.
 - Customizability: You can change any of the time thresholds to customize your user experience.
     - `HoldThreshold`: The time it takes before the first `HOLD` event is executed after the button is held down.
     - `HoldInterval`: The Time Interval that corresponds to the `HOLD` event being executed repeatedly after the first `HOLD` event was registered.
