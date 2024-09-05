@@ -1,5 +1,22 @@
 #include "EZButton.h"
 
+#ifndef EZBUTTON_SerialOutput
+    #define EZBUTTON_SerialOutput Serial
+#endif
+
+#ifdef EZBUTTON_DEBUG
+    void EZButton::LogEventToSerial(String message, int index, EventTypes type)
+    {
+        EZBUTTON_SerialOutput.println(message);
+        EZBUTTON_SerialOutput.println("button index: " + (String)index);
+        EZBUTTON_SerialOutput.println("event type: " + (String)type);
+        EZBUTTON_SerialOutput.println("event index: " + (String)EventIndex(index, type));
+    }
+    #define LogEvent(...) LogEventToSerial(__VA_ARGS__)
+#else
+    #define LogEvent(...) 
+#endif
+
 EZButton::EZButton(int buttonCount,
                    void (*readButtons)(bool *, int),
                    unsigned int holdThreshold,
@@ -94,20 +111,14 @@ void EZButton::Subscribe(int index, void (*event)(), EventTypes type)
 {
     _events[EventIndex(index, type)] = event;
 
-#ifdef EZBUTTON_DEBUG
-    Serial.println("Subscribe:");
-    DebugEvents(index, type);
-#endif
+    LogEvent("Subscribe:", index, type);
 }
 
 void EZButton::CallEvent(int index, EventTypes type)
 {
     int i = EventIndex(index, type);
 
-#ifdef EZBUTTON_DEBUG
-    Serial.println("Call:");
-    DebugEvents(index, type);
-#endif
+    LogEvent("Call:",index, type);
 
     if (_events[i] != nullptr)
         _events[i]();
@@ -117,12 +128,3 @@ int EZButton::EventIndex(int index, EventTypes type)
 {
     return index + type * _numButtons;
 }
-
-#ifdef EZBUTTON_DEBUG
-void EZButton::DebugEvents(int index, EventTypes type)
-{
-    Serial.println("index : " + (String)index);
-    Serial.println("event : " + (String)type);
-    Serial.println("i: " + (String)EventIndex(index, type));
-}
-#endif
