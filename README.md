@@ -106,11 +106,14 @@ void loop()
 }
 ```
 
+### Debugging
 > [!TIP]
-> #### Debugging
 > To enable debugging, you need to add the `-DEZBUTTON_DEBUG` parameter to your `build_flags`.
 > 
 > This will log event subscriptions and event executions to the serial.
+
+> [!TIP]
+> If you are using another `Serial` port, you can override the default serial by adding the `-DEZBUTTON_SerialOutput=Serial1` Build Flag to your environment.
 
 > [!IMPORTANT]
 > Right now only one subscription is possible for each button event.
