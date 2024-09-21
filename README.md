@@ -1,4 +1,5 @@
 <p align=left>
+   <a href="https://www.ardu-badge.com/EZButton"><img src="https://www.ardu-badge.com/badge/EZButton.svg"/></a>
    <img src="https://img.shields.io/github/v/release/IPdotSetAF/EZButton"/>
    <img src="https://img.shields.io/github/release-date/IPdotSetAF/EZButton"/>
    <img src="https://img.shields.io/github/last-commit/IPdotSetAF/EZButton"/>
