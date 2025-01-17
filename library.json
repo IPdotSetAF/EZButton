@@ -1,6 +1,6 @@
 {
     "name": "EZButton",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "Transform raw button/touch inputs into events easily. Subscibe to Pressed/Released/Hold/HoldReleased events of as many buttons as you want. Customize time thresholds and debouncing. Works with any button read method.",
     "keywords": 
     [
