@@ -91,6 +91,15 @@ _ezb.Subscribe(BTN_3, Btn3Hold, HOLD);
 _ezb.Subscribe(BTN_3, Btn3Release, RELEASED);
 _ezb.Subscribe(BTN_4, Btn4Hold, HOLD);
 _ezb.Subscribe(BTN_4, Btn4Release, RELEASED);
+
+//or you can pass lambda functions
+_ezb.Subscribe(BTN_4, []() {
+    //...
+    }, HOLD);
+_ezb.Subscribe(BTN_4, [](int index) {
+    //index will be the index of the button triggering the event
+    //...
+    }, RELEASED);
 ``` 
 > [!IMPORTANT]
 > `button index` stands for an array inside EZButton that holds your button states and IS NOT PIN of the button.
@@ -115,7 +124,18 @@ void loop()
 	_ezb.Loop();
 }
 ```
+8. Define Event Functions that was used in Subscriptions (step 5)
+``` C++
+void Btn1HoldRelease(){
+    //...
+}
 
+// you can also get the button index
+void Btn2Release(int index){
+    //...
+}
+//...
+```
 ### Debugging
 > [!TIP]
 > To enable debugging, you need to add the `-DEZBUTTON_DEBUG` parameter to your `build_flags`.
