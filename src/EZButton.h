@@ -12,6 +12,8 @@ enum EventTypes
     RELEASED
 };
 
+typedef void (*Event)(int); // Type alias for function pointer
+
 class EZButton
 {
 public:
@@ -29,7 +31,7 @@ public:
 
     void Blackout(unsigned long milis);
     void Loop();
-    void Subscribe(int index, void (*event)(), EventTypes type);
+    void Subscribe(int index, Event event, EventTypes type);
 
 private:
     int _numButtons;
@@ -39,7 +41,6 @@ private:
     bool *_buttonLastState;
     unsigned long _blackoutTime = 0;
 
-    typedef void (*Event)(); // Type alias for function pointer
     Event *_events;
     void (*_readButtons)(bool *, int);
 

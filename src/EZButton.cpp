@@ -107,7 +107,7 @@ void EZButton::Loop()
     delete[] buttonStates;
 }
 
-void EZButton::Subscribe(int index, void (*event)(), EventTypes type)
+void EZButton::Subscribe(int index, Event event, EventTypes type)
 {
     _events[EventIndex(index, type)] = event;
 
@@ -121,7 +121,7 @@ void EZButton::CallEvent(int index, EventTypes type)
     LogEvent("Call:",index, type);
 
     if (_events[i] != nullptr)
-        _events[i]();
+        _events[i](index);
 }
 
 int EZButton::EventIndex(int index, EventTypes type)
