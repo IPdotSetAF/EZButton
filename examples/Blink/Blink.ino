@@ -19,7 +19,13 @@ void setup() {
   _ezb.Subscribe(BTN_1, Btn1Pressed, PRESSED);
   _ezb.Subscribe(BTN_1, Btn1Released, RELEASED);
   _ezb.Subscribe(BTN_1, Btn1Hold, HOLD);
+  //Or you can use lambda functions
+  // _ezb.Subscribe(BTN_1, [](){Serial.println("pressed");}, PRESSED);
+  
+  //You can also get the button index in the event
   _ezb.Subscribe(BTN_1, Btn1HoldReleased, HOLD_RELEASED);
+  //Or you can use lambda functions
+  // _ezb.Subscribe(BTN_1, [](int index){Serial.println(index);}, HOLD);
 }
 
 void loop() {
@@ -41,7 +47,7 @@ void Btn1Hold() {
   digitalWrite(LED_BUILTIN, state);
 }
 
-void Btn1HoldReleased() {
+void Btn1HoldReleased(int index) {
   for (int i = 0; i < 6; i++) {
     state = !state;
     digitalWrite(LED_BUILTIN, state);
