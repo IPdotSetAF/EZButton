@@ -71,7 +71,7 @@ void EZButton::Loop()
         unsigned long stateChangeDiff = millis() - _buttonDownMillis[i];
         if (stateChangeDiff < DebounceTime)
             continue;
-            
+
         if (buttonStates[i])
         {
             if (!_buttonLastState[i])
@@ -114,11 +114,16 @@ void EZButton::Subscribe(int index, Event event, EventTypes type)
     LogEvent("Subscribe:", index, type);
 }
 
+void EZButton::Subscribe(int index, void (*event)(), EventTypes type)
+{
+    Subscribe(index, (Event)event, type);
+}
+
 void EZButton::CallEvent(int index, EventTypes type)
 {
     int i = EventIndex(index, type);
 
-    LogEvent("Call:",index, type);
+    LogEvent("Call:", index, type);
 
     if (_events[i] != nullptr)
         _events[i](index);

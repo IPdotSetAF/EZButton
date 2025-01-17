@@ -32,6 +32,7 @@ public:
     void Blackout(unsigned long milis);
     void Loop();
     void Subscribe(int index, Event event, EventTypes type);
+    void Subscribe(int index, void (*event)(), EventTypes type);
 
 private:
     int _numButtons;
