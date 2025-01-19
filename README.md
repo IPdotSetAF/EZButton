@@ -56,7 +56,7 @@ This Library is available in `Arduino Library Repository` and `PIO` and you can 
   
 ![pltformio library](image.png)
 
-`ipdotsetaf/EZButton@^2.3.0`
+`ipdotsetaf/EZButton@^2.5.0`
 ### Usage
 
 1. Include the library
